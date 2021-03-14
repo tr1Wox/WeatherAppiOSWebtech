@@ -11,7 +11,9 @@ import SwiftUI
 struct ContentView: View {
     private let weatherViewModel = WeatherViewModel()
     @State private var weather: WeatherModel?
-    @State static var showPopUp: Bool = false
+    @State private var showPopUp: Bool = false
+    @State private var text: String = ""
+    @State private var city: String = "Bordeaux"
     
     var body: some View {
         ZStack {
@@ -45,7 +47,7 @@ struct ContentView: View {
                 .padding(.horizontal, 50)
                 Spacer()
                 Button {
-                    ContentView.showPopUp = true
+                    self.showPopUp = true
                 } label: {
                     Text("Choisir une autre ville")
                         .frame(width: 300, height: 50)
@@ -54,23 +56,10 @@ struct ContentView: View {
                         .cornerRadius(4)
                 }.padding(.bottom, 10)
             }
-            if ContentView.showPopUp {
-                ZStack {
-                    Color.white
-                    VStack {
-                        Text("Custom Pop Up")
-                        Spacer()
-                        Button(action: {
-                            ContentView.showPopUp = false
-                        }, label: {
-                            Text("Close")
-                        })
-                    }.padding()
-                }
-                    .frame(width: 300, height: 200)
-                    .cornerRadius(20).shadow(radius: 20)
+            if self.showPopUp == true {
+                PopUpCity(showPopUp: self.$showPopUp, text: self.$text, onDone: {text in loadData(city: text)})
             }
-        } .onAppear(perform: loadData)
+        } .onAppear(perform: { loadData(city: city) })
     }
     
     var colors: [Color] {
@@ -81,13 +70,13 @@ struct ContentView: View {
         }
     }
     
-    private func loadData() {
+    private func loadData(city: String) {
         weatherViewModel.showHandler = { weather in
             DispatchQueue.main.async {
                 self.weather = weather
             }
         }
-        weatherViewModel.getWeather(city: "Marseille")
+        weatherViewModel.getWeather(city: city)
     }
 }
 
