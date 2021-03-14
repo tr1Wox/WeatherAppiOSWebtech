@@ -47,6 +47,7 @@ struct ContentView: View {
                 .padding(.horizontal, 50)
                 Spacer()
                 Button {
+                    self.text = ""
                     self.showPopUp = true
                 } label: {
                     Text("Choisir une autre ville")

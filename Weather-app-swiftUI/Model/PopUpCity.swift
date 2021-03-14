@@ -17,11 +17,15 @@ struct PopUpCity: View {
         ZStack(alignment: .center) {
             if showPopUp {
                 VStack {
+                    Spacer()
                     Text("Choisir une nouvelle ville")
                         .font(.system(size: 25, weight:.medium, design:.default))
                         .foregroundColor(.black)
+                        .padding(10)
                     TextField("Ville", text: self.$text)
-                    HStack{
+                        .padding()
+                    Spacer()
+                    HStack(spacing: 40) {
                         Button {
                             showPopUp = false
                         } label: {
@@ -30,8 +34,7 @@ struct PopUpCity: View {
                                 .foregroundColor(.red)
                                 .font(.system(size: 20, weight: .bold, design: .default))
                                 .cornerRadius(4)
-                        }.padding(.bottom, 10)
-                        
+                        }
                         Button {
                             onDone(self.text)
                             showPopUp = false
@@ -41,14 +44,16 @@ struct PopUpCity: View {
                                 .foregroundColor(.blue)
                                 .font(.system(size: 20, weight: .bold, design: .default))
                                 .cornerRadius(4)
-                        }.padding(.bottom, 10)
+                        }
                     }
+                    .padding(.bottom, 10)
                 }
-                .background(Color.white)
-                .frame(width: 300, height: 200)
-                .cornerRadius(20).shadow(radius: 20)
+                
             }
         }
+        .background(Color.white)
+        .frame(width: 300, height: 200)
+        .cornerRadius(20).shadow(radius: 20)
     }
 }
 
