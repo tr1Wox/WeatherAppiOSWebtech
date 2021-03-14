@@ -15,8 +15,8 @@ final class WeatherViewModel {
         self.weatherService = weatherService
     }
 
-    func getWeather() {
-        weatherService.getFiveDaysForecast(city: "Paris") { [weak self] result in
+    func getWeather(city: String) {
+        weatherService.getFiveDaysForecast(city: city) { [weak self] result in
             guard let self = self else { return }
 
             switch result {

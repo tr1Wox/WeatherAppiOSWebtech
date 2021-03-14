@@ -16,8 +16,8 @@ final class WeatherService {
     private let urlSession: URLSession
     private let baseURLString = "https://api.openweathermap.org/data/2.5/forecast?"
     private let dateJSONDecoder: DateJSONDecoder
-    private let appId = "f607db950c799cd439724f7948c33a61" // TODO : change to your appId.
-
+    private let appId = "bcef77295c75ddfbc69e7cb9f35ed4a5"
+    
     init(
         urlSession: URLSession = .shared,
         dateJSONDecoder: DateJSONDecoder = .init()

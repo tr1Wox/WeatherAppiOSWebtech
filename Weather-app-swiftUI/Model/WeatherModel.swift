@@ -13,31 +13,31 @@ struct WeatherModel: Decodable {
 }
 
 extension WeatherModel {
-    var firstDay: Weather? {
+    var firstHour: Weather? {
         guard let weather = list.first else { return nil }
 
         return weather
     }
 
-    var secondDay: Weather? {
+    var secondHour: Weather? {
         guard list.count > 1 else { return nil }
 
         return list[1]
     }
 
-    var thirdDay: Weather? {
+    var thirdHour: Weather? {
         guard list.count > 2 else { return nil }
 
         return list[2]
     }
 
-    var fourthDay: Weather? {
+    var fourthHour: Weather? {
         guard list.count > 3 else { return nil }
 
         return list[3]
     }
 
-    var fifthDay: Weather? {
+    var fifthHour: Weather? {
         guard list.count > 4 else { return nil }
 
         return list[4]

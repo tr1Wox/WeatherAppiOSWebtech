@@ -37,9 +37,7 @@ extension Weather {
             return "sun.max.fill"
         }
     }
-}
 
-extension Weather {
     var formattedDate: String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale.init(identifier: "fr_FR")
@@ -47,3 +45,4 @@ extension Weather {
         return "\(dateFormatter.string(from: date))h"
     }
 }
+
